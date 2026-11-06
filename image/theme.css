@@ -1,0 +1,11 @@
+/* Appended to Anubis's stylesheet, so these rules show for light and dark schemes. */
+
+:root {
+  --text: #1d2021;
+  --preformatted-background: #ebdbb2;
+  --link-background: transparent;
+}
+
+body {
+  background: oklch(89.4% 0.057 293.283); /* Tailwind violet-200 */
+}
