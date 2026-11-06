@@ -3,8 +3,8 @@
 # Gathers and summarizes Anubis' metrics. Data resets when the container restarts.
 #
 # Usage: ./metrics.sh [--log]
-#   --log  write a one-line summary to the system log instead, for cron or a
-#          timer. You can read the logs with: `journalctl -t anubis-metrics`
+#        --log  write a one-line summary to the system log instead, for cron or a
+#               timer. You can read the logs with: `journalctl -t anubis-metrics`
 
 set -euo pipefail
 
