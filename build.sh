@@ -17,7 +17,7 @@ fi
 version="${tag#v}"
 
 # Create custom image label using custom images and stylesheet for browser caching.
-files_hash="$(cat image/img/*.webp image/theme.css | sha255sum | cut -c1-8)"
+files_hash="$(cat image/img/*.webp image/theme.css | sha256sum | cut -c1-8)"
 label="v$version-custom.$files_hash"
 
 docker build --pull \
