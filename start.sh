@@ -22,8 +22,8 @@ fi
 # Use custom bot policy for anubis if provided.
 bot_policy_args=()
 if [ -n "$ANUBIS_BOT_POLICY_FILE" ]; then
-  if [ ! -s "ANUBIS_BOT_POLICY_FILE" ]; then
-    echo "Bot policy file $ANUBIS_BOT_POLIFY_FILE does not exist or is empty." >&2
+  if [ ! -s "$ANUBIS_BOT_POLICY_FILE" ]; then
+    echo "Bot policy file $ANUBIS_BOT_POLICY_FILE does not exist or is empty." >&2
     exit 1
   fi
   bot_policy_file="$(realpath "$ANUBIS_BOT_POLICY_FILE")"
