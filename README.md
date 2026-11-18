@@ -41,7 +41,7 @@ visitor -> nginx :443 -> Anubis 127.0.0.1:8923 -> nginx 127.0.0.1:8081 -> your s
     1. For static sites, use the `static-site-example.conf` nginx file as a template.
     2. For apps/services, use the `service-example.conf` nginx file as a template.
 
-3. **Optional**: To use your own custom bot policy, set `ANUBIS_BOT_POLICY_FILE` to the correct path to that file. Otherwise, anubis default botPolicy.yaml file is used.
+3. **Optional**: To use your own custom bot policy, set `ANUBIS_BOT_POLICY_FILE` in `anubis.env` to the correct path to that file. Otherwise, anubis default botPolicy.yaml file is used.
 
 4. Build and start Anubis.
    ```bash
