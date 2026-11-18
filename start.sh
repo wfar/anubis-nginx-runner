@@ -19,6 +19,18 @@ if [ -z "$ANUBIS_REDIRECT_DOMAINS" ]; then
   exit 1
 fi
 
+# Use custom bot policy for anubis if provided.
+bot_policy_args=()
+if [ -n "$ANUBIS_BOT_POLICY_FILE" ]; then
+  if [ ! -s "ANUBIS_BOT_POLICY_FILE" ]; then
+    echo "Bot policy file $ANUBIS_BOT_POLIFY_FILE does not exist or is empty." >&2
+    exit 1
+  fi
+  bot_policy_file="$(realpath "$ANUBIS_BOT_POLICY_FILE")"
+  bot_policy_path="/etc/anubis/policy.${bot_policy_file##*.}"
+  bot_policy_args=(--volume "$bot_policy_file:$bot_policy_path:ro" --env "POLICY_FNAME=$bot_policy_path")
+fi
+
 # If no anubis key file is found, a new one is created.
 # Best practice is to use existing key so user's pass
 # cookie is not invalidated on every start.
@@ -40,4 +52,5 @@ docker run --detach --name anubis --restart unless-stopped \
   --env "REDIRECT_DOMAINS=$ANUBIS_REDIRECT_DOMAINS" \
   --env "COOKIE_DOMAIN=$ANUBIS_COOKIE_DOMAIN" \
   --env ED25519_PRIVATE_KEY_HEX \
+  "${bot_policy_args[@]}" \
   "$IMAGE"
